@@ -1,6 +1,6 @@
 # Activity 2 - Plan Your Form
 
-![Sample Form](../public/sample-form.png)
+![Sample Form](../pub1lic/sample-form.png)
 
 -   Take a moment to consider how you might design the rest of the form in code.
 
