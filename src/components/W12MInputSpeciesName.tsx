@@ -1,12 +1,15 @@
 import { useState } from "react";
 
-const W12MInputSpeciesName = () => {
-  const [speciesName, setSpeciesName] = useState("");
+import W12MinterfaceInputProps from "./W12MinterfaceInputProps";
 
+const W12MInputSpeciesName: React.FC<W12MinterfaceInputProps> = ({
+  state,
+  setState,
+}) => {
   const handleSpeciesNameChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setSpeciesName(event.target.value);
+    setState(event.target.value);
   };
 
   return (
@@ -15,7 +18,7 @@ const W12MInputSpeciesName = () => {
       <input
         id="speciesName"
         type="text"
-        value={speciesName}
+        value={state}
         onChange={handleSpeciesNameChange}
       />
     </>

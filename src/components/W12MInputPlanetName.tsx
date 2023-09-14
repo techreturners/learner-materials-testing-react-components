@@ -1,12 +1,14 @@
 import { useState } from "react";
+import W12MinterfaceInputProps from "./W12MinterfaceInputProps";
 
-const W12MInputPlanetName = () => {
-  const [planetName, setPlanetName] = useState("");
-
+const W12MInputPlanetName: React.FC<W12MinterfaceInputProps> = ({
+  state,
+  setState,
+}) => {
   const handlePlanetNameChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setPlanetName(event.target.value);
+    setState(event.target.value);
   };
 
   return (
@@ -15,7 +17,7 @@ const W12MInputPlanetName = () => {
       <input
         id="planetName"
         type="text"
-        value={planetName}
+        value={state}
         onChange={handlePlanetNameChange}
       />
     </>

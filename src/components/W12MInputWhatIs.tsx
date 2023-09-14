@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const W12MInputWhatIs = () => {
+const W12MInputWhatIs: React.FC = () => {
   const [whatIs, setWhatIs] = useState("");
 
   const handleWhatIsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

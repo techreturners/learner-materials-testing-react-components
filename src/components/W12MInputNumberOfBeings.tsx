@@ -1,12 +1,14 @@
 import { useState } from "react";
+import W12MinterfaceInputProps from "./W12MinterfaceInputProps";
 
-const W12MInputNumberOfBeings = () => {
-  const [numberOfBeings, setNumberOfBeings] = useState("");
-
+const W12MInputNumberOfBeings: React.FC<W12MinterfaceInputProps> = ({
+  state,
+  setState,
+}) => {
   const handleNumberOfBeingsChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setNumberOfBeings(event.target.value);
+    setState(event.target.value);
   };
 
   return (
@@ -15,7 +17,7 @@ const W12MInputNumberOfBeings = () => {
       <input
         id="numberOfBeings"
         type="text"
-        value={numberOfBeings}
+        value={state}
         onChange={handleNumberOfBeingsChange}
       />
     </>
