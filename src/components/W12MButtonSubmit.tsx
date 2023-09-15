@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const W12MButtonSubmit: React.FC = () => {
   const handleSubmit = () => {
-    alert(`Form data submitted:`);
+    console.log(`Form data submitted:`);
   };
 
   return (

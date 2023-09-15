@@ -7,6 +7,12 @@ import W12MInputWhatIs from "./W12MInputWhatIs";
 import W12MInputReasonForSparing from "./W12MInputReasonForSparing";
 import W12MButtonSubmit from "./W12MButtonSubmit";
 
+import validateSpeciesName from "./validateSpeciesName";
+import validatePlanetName from "./validatePlanetName";
+import validateNumberOfBeings from "./validateNumberOfBeings";
+import validateReasonForSparing from "./validateReasonForSparing";
+import validateWhatIs from "./validateWhatIs";
+
 const W12MForm: React.FC = () => {
   const [speciesName, setSpeciesName] = useState("Some name");
   const [planetName, setPlanetName] = useState("Some planet name");
@@ -46,19 +52,23 @@ const W12MForm: React.FC = () => {
         <W12MInputSpeciesName
           state={speciesName}
           setState={(value) => setSpeciesName(value)}
+          validate={validateSpeciesName}
         />
         <W12MInputPlanetName
           state={planetName}
           setState={(value) => setPlanetName(value)}
+          validate={validatePlanetName}
         />
         <W12MInputNumberOfBeings
           state={numberOfBeings}
           setState={(value) => setNumberOfBeings(value)}
+          validate={validateNumberOfBeings}
         />
-        <W12MInputWhatIs />
+        <W12MInputWhatIs validate={validateWhatIs} />
         <W12MInputReasonForSparing
           state={reasonForSparing}
           setState={(value) => setReasonForSparing(value)}
+          validate={validateReasonForSparing}
         />
         <W12MButtonSubmit />
       </form>

@@ -1,16 +1,17 @@
 import { useState } from "react";
 import W12MinterfaceInputProps from "./W12MinterfaceInputProps";
-
-const W12MInputReasonForSparing: React.FC<W12MinterfaceInputProps> = ({
-  state,
-  setState,
-}) => {
+import ErrorMessage from "./ErrorMessage";
+const W12MInputReasonForSparing: React.FC<W12MinterfaceInputProps> = (
+  props
+) => {
+  const [state, setState] = useState(props.state);
   const handleReasonForSparingChange = (
     event: React.ChangeEvent<HTMLTextAreaElement> //
   ) => {
-    setState(event.target.value);
+    const newValue = event.target.value;
+    setState(newValue);
   };
-
+  const errorMessage = props.validate(state);
   return (
     <>
       <label htmlFor="reasonForSparing">Reason For Sparing</label>
@@ -19,6 +20,7 @@ const W12MInputReasonForSparing: React.FC<W12MinterfaceInputProps> = ({
         value={state}
         onChange={handleReasonForSparingChange}
       />
+      {errorMessage !== undefined && <ErrorMessage message={errorMessage} />}
     </>
   );
 };

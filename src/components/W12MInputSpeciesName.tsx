@@ -1,16 +1,18 @@
+import W12MinterfaceInputProps from "./W12MinterfaceInputProps";
+import ErrorMessage from "./ErrorMessage";
 import { useState } from "react";
 
-import W12MinterfaceInputProps from "./W12MinterfaceInputProps";
+const W12MInputSpeciesName: React.FC<W12MinterfaceInputProps> = (props) => {
+  const [state, setState] = useState(props.state);
 
-const W12MInputSpeciesName: React.FC<W12MinterfaceInputProps> = ({
-  state,
-  setState,
-}) => {
   const handleSpeciesNameChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setState(event.target.value);
+    const newValue = event.target.value;
+    setState(newValue);
   };
+
+  const errorMessage = props.validate(state);
 
   return (
     <>
@@ -21,6 +23,7 @@ const W12MInputSpeciesName: React.FC<W12MinterfaceInputProps> = ({
         value={state}
         onChange={handleSpeciesNameChange}
       />
+      {errorMessage !== undefined && <ErrorMessage message={errorMessage} />}
     </>
   );
 };
