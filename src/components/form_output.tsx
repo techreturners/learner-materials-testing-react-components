@@ -16,7 +16,7 @@ export const FormOutput: React.FC<FormValuesProps> = (props) => {
         <>
         <p>Species Name: {props.speciesName}</p>
         <p>Planet Name: {props.planetName}</p>
-        <p>Population: {props.numberOfBeings}</p>
+        <p>Number of Beings: {props.numberOfBeings}</p>
         <p>What is 2 + 2?: {props.mathsAnswer}</p>
         <p>Reasons for Sparing: {props.reasonsForSparing}</p>
         </>
