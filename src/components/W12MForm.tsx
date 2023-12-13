@@ -4,11 +4,13 @@ import {SpeciesName} from './species_name';
 import { PlanetName } from './planet_name';
 import { NumberOfBeings } from './number_of_beings';
 import { ReasonsForSparing } from './reasons_for_sparing';
+import { MathsQuestion } from './maths_question';
 
 const W12MForm = () => {
 	const [speciesName, setSpeciesName] = useState('humans');
 	const [planetName, setPlanetName] = useState('earth');
 	const [numberOfBeings, setNumberOfBeings] = useState('population');
+	const [mathsAnswer, setMathsAnswer] = useState('population');
 	const [reasonsForSparing, setReasonsForSparing] = useState('reasons');
 
 	return (
@@ -17,6 +19,7 @@ const W12MForm = () => {
 			<SpeciesName speciesName={speciesName} onChangeSpeciesName={(value) => setSpeciesName(value)} />
 			<PlanetName planetName={planetName} onChangePlanetName={(value) => setPlanetName(value)} />
 			<NumberOfBeings numberOfBeings={numberOfBeings} onChangeNumberOfBeings={(value) => setNumberOfBeings(value)} />
+			<MathsQuestion mathsAnswer={mathsAnswer} onChangeMathsAnswer={(value) => setMathsAnswer(value)} />
 			<ReasonsForSparing reasonsForSparing={reasonsForSparing} onChangeReasonsForSparing={(value) => setReasonsForSparing(value)} />
 		</section>
 	);
