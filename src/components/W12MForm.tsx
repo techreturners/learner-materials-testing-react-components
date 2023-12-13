@@ -7,6 +7,7 @@ import { ReasonsForSparing } from './reasons_for_sparing';
 import { MathsQuestion } from './maths_question';
 import { FormOutput } from './form_output';
 import { ChangeEvent, MouseEvent } from 'react';
+import { SubmitButton } from './submit_button';
 
 const W12MForm = () => {
 	
@@ -45,7 +46,7 @@ const W12MForm = () => {
 			<NumberOfBeings numberOfBeings={input.numberOfBeings} onChangeNumberOfBeings={handleChange} />
 			<MathsQuestion mathsAnswer={input.mathsAnswer} onChangeMathsAnswer={handleChange} />
 			<ReasonsForSparing reasonsForSparing={input.reasonsForSparing} onChangeReasonsForSparing={handleChange} />
-			<button onClick={handleSubmit}>Submit Application</ button>
+			<SubmitButton buttonText = "Submit Application" onSubmitHandler = {handleSubmit}/>
 			</div>
 			<FormOutput 
 			speciesName = {input.speciesName}

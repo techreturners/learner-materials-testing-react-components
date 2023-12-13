@@ -44,3 +44,20 @@ test('Species name input field displays value passed in through props', async ()
 	//Assert
 	expect(inputField.value).toBe("Woman");
 });
+
+test('input field call its onChange function', async () => {
+    //Arrange
+	const mockSubmit = jest.fn();
+	const requiredProps = {
+		speciesName: "",
+		onChangeSpeciesName: mockSubmit
+	};
+	//Act
+	render(<SpeciesName {...requiredProps}/>);
+	const inputField: HTMLInputElement = screen.getByLabelText("Species Name");
+	//Assert
+	if (inputField) {
+		fireEvent.change(inputField, {target: {value: 'W'}})
+	}
+	expect(mockSubmit).toBeCalled();
+});

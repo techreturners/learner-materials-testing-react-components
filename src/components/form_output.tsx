@@ -1,4 +1,3 @@
-import { NumberOfBeings } from "./number_of_beings";
 
 type FormValuesProps = {
     speciesName: string;
