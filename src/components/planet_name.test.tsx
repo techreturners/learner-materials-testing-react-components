@@ -24,7 +24,7 @@ test('Planet name Input field exists', async () => {
 	};
 	//Act
 	render(<PlanetName {...requiredProps}/>);
-	const inputField = screen.getByLabelText("Planet Name");
+	const inputField: HTMLInputElement = screen.getByLabelText("Planet Name");
 	//Assert
     expect(inputField).toBeInTheDocument();
 });

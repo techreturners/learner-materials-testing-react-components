@@ -24,7 +24,7 @@ test('Species name Input field exists', async () => {
 	};
 	//Act
 	render(<SpeciesName {...requiredProps}/>);
-	const inputField = screen.getByLabelText("Species Name");
+	const inputField: HTMLInputElement = screen.getByLabelText("Species Name");
 	//Assert
     expect(inputField).toBeInTheDocument();
 });

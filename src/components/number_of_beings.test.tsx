@@ -23,7 +23,7 @@ test('Number of Beings Input field exists', async () => {
 	};
 	//Act
 	render(<NumberOfBeings {...requiredProps}/>);
-	const inputField = screen.getByLabelText("Number of Beings");
+	const inputField: HTMLInputElement = screen.getByLabelText("Number of Beings");
 	//Assert
     expect(inputField).toBeInTheDocument();
 });
