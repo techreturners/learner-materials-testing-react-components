@@ -5,33 +5,56 @@ import { PlanetName } from './planet_name';
 import { NumberOfBeings } from './number_of_beings';
 import { ReasonsForSparing } from './reasons_for_sparing';
 import { MathsQuestion } from './maths_question';
-import { SubmitButton } from './submit_buttom';
+import { FormOutput } from './form_output';
+import { ChangeEvent, MouseEvent } from 'react';
 
 const W12MForm = () => {
-	const [speciesName, setSpeciesName] = useState('humans');
-	const [planetName, setPlanetName] = useState('earth');
-	const [numberOfBeings, setNumberOfBeings] = useState('population');
-	const [mathsAnswer, setMathsAnswer] = useState('population');
-	const [reasonsForSparing, setReasonsForSparing] = useState('reasons');
+	
 	const initialValue = {
 		speciesName: "",
 		planetName: "",
 		numberOfBeings: "",
 		mathsAnswer: "",
-		reasonsForSparing: ""
+		reasonsForSparing: "",
+		submitted: false
 	}
-	const [submitButton, setSubmittedInput] = useState(initialValue);
+	const [input, setInput] = useState(initialValue);
+
+	function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
+		setInput({...input, submitted: true});
+	}
+
+	function handleChange(event: ChangeEvent<HTMLInputElement> | 
+		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>) {
+		setInput((currentData) =>
+		  Object.assign({}, currentData, {
+			[event.target.id]: event.target.value,
+		  })
+		)
+		if (input.submitted) {
+			setInput(initialValue);
+		}
+	  }
 
 	return (
 		<section className='w12MForm'>
 			<W12MHeader />
-			<SpeciesName speciesName={speciesName} onChangeSpeciesName={(value) => setSpeciesName(value)} />
-			<PlanetName planetName={planetName} onChangePlanetName={(value) => setPlanetName(value)} />
-			<NumberOfBeings numberOfBeings={numberOfBeings} onChangeNumberOfBeings={(value) => setNumberOfBeings(value)} />
-			<MathsQuestion mathsAnswer={mathsAnswer} onChangeMathsAnswer={(value) => setMathsAnswer(value)} />
-			<ReasonsForSparing reasonsForSparing={reasonsForSparing} onChangeReasonsForSparing={(value) => setReasonsForSparing(value)} />
-			<SubmitButton />
-		</section>
+			<div className = "col-50-left">
+			<SpeciesName speciesName={input.speciesName} onChangeSpeciesName={handleChange} />
+			<PlanetName planetName={input.planetName} onChangePlanetName={handleChange} />
+			<NumberOfBeings numberOfBeings={input.numberOfBeings} onChangeNumberOfBeings={handleChange} />
+			<MathsQuestion mathsAnswer={input.mathsAnswer} onChangeMathsAnswer={handleChange} />
+			<ReasonsForSparing reasonsForSparing={input.reasonsForSparing} onChangeReasonsForSparing={handleChange} />
+			<button onClick={handleSubmit}>Submit Application</ button>
+			</div>
+			<FormOutput 
+			speciesName = {input.speciesName}
+			planetName = {input.planetName}
+			numberOfBeings = {input.numberOfBeings}
+			mathsAnswer = {input.mathsAnswer}
+			reasonsForSparing= {input.reasonsForSparing}
+			submitted = {input.submitted}/>
+		</section>	
 	);
 };
 

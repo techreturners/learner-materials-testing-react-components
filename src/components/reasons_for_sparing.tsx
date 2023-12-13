@@ -1,7 +1,7 @@
-
+import { ChangeEventHandler } from "react";
 interface ReasonsForSparingProps {
 	reasonsForSparing: string;
-	onChangeReasonsForSparing: (value: string) => void;
+	onChangeReasonsForSparing: ChangeEventHandler<HTMLTextAreaElement>;
 }
 
 export const ReasonsForSparing : React.FC<ReasonsForSparingProps> = ({reasonsForSparing, onChangeReasonsForSparing}) => (
@@ -11,5 +11,5 @@ export const ReasonsForSparing : React.FC<ReasonsForSparingProps> = ({reasonsFor
 					rows= {5}
 					cols= {20}
 					value={reasonsForSparing}
-					onChange={(e) => onChangeReasonsForSparing(e.target.value)} />
+					onChange={onChangeReasonsForSparing} />
     </> );

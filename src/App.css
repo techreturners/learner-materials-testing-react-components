@@ -19,6 +19,29 @@ body {
   * {
 	box-sizing: border-box;
   }
+
+  .col-50-left {
+	float: left;
+	width: 50%;
+	margin-top: 1%;
+  }
+  
+  .col-50-right {
+	float: right;
+	width: 48%;
+	margin-top: 1%;
+	margin-left: 2%;
+	padding: 2%;
+  }
+
+  .pending {
+	background-color: #ffe4a8;
+  }
+
+  .submitted {
+	background-color: #C6EDC3;
+
+  }
   
   input[type=text], select, textarea {
 	width: 100%;
