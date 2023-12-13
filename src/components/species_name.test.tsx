@@ -16,7 +16,6 @@ test('renders form label for species name', () => {
 	expect(labelText).toBeInTheDocument();
 });
 
-
 test('Species name Input field exists', async () => {
     //Arrange
 	const requiredProps = {
@@ -43,7 +42,7 @@ test('Species name input field displays value passed in through props', async ()
 	expect(inputField.value).toBe("Woman");
 });
 
-test('input field call its onChange function', async () => {
+test('Species name input field call its onChange function', async () => {
     //Arrange
 	const mockSubmit = jest.fn();
 	const requiredProps = {

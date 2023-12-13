@@ -42,7 +42,7 @@ test('Planet name input field displays value passed in through props', async () 
 	expect(inputField.value).toBe("Mars");
 });
 
-test('input field call its onChange function', async () => {
+test('Planet name input field calls its onChange function', async () => {
     //Arrange
 	const mockSubmit = jest.fn();
 	const requiredProps = {
