@@ -1,7 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
 import { SpeciesName } from './species_name';
-import userEvent from '@testing-library/user-event';
 import { fireEvent } from '@testing-library/react';
 
 test('renders form label for species name', () => {
