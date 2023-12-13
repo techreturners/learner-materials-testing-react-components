@@ -1,5 +1,8 @@
 import { render, screen } from '@testing-library/react';
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
 import { SpeciesName } from './species_name';
+import userEvent from '@testing-library/user-event';
+import { fireEvent } from '@testing-library/react';
 
 test('renders form label for species name', () => {
 
@@ -13,4 +16,31 @@ test('renders form label for species name', () => {
 		/Species Name/i
 	);
 	expect(labelText).toBeInTheDocument();
+});
+
+
+test('Species name Input field exists', async () => {
+    //Arrange
+	const requiredProps = {
+		speciesName: "",
+		onChangeSpeciesName: () => {}
+	};
+	//Act
+	render(<SpeciesName {...requiredProps}/>);
+	const inputField = screen.getByLabelText("Species Name");
+	//Assert
+    expect(inputField).toBeInTheDocument();
+});
+
+test('Species name input field displays value passed in through props', async () => {
+    //Arrange
+	const requiredProps = {
+		speciesName: "Woman",
+		onChangeSpeciesName: () => {}
+	};
+	//Act
+	render(<SpeciesName {...requiredProps}/>);
+	const inputField: HTMLInputElement = screen.getByLabelText("Species Name");
+	//Assert
+	expect(inputField.value).toBe("Woman");
 });
