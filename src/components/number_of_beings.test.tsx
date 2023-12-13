@@ -4,7 +4,7 @@ import { NumberOfBeings } from './number_of_beings';
 test('renders form label for number of beings', () => {
 
 	const requiredProps = {
-		numberOfBeings: "Woman",
+		numberOfBeings: "999",
 		onChangeNumberOfBeings: () => {}
 	};
 	render(<NumberOfBeings {...requiredProps}/>);
