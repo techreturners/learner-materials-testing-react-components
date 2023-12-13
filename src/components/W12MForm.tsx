@@ -5,6 +5,7 @@ import { PlanetName } from './planet_name';
 import { NumberOfBeings } from './number_of_beings';
 import { ReasonsForSparing } from './reasons_for_sparing';
 import { MathsQuestion } from './maths_question';
+import { SubmitButton } from './submit_buttom';
 
 const W12MForm = () => {
 	const [speciesName, setSpeciesName] = useState('humans');
@@ -12,6 +13,14 @@ const W12MForm = () => {
 	const [numberOfBeings, setNumberOfBeings] = useState('population');
 	const [mathsAnswer, setMathsAnswer] = useState('population');
 	const [reasonsForSparing, setReasonsForSparing] = useState('reasons');
+	const initialValue = {
+		speciesName: "",
+		planetName: "",
+		numberOfBeings: "",
+		mathsAnswer: "",
+		reasonsForSparing: ""
+	}
+	const [submitButton, setSubmittedInput] = useState(initialValue);
 
 	return (
 		<section className='w12MForm'>
@@ -21,6 +30,7 @@ const W12MForm = () => {
 			<NumberOfBeings numberOfBeings={numberOfBeings} onChangeNumberOfBeings={(value) => setNumberOfBeings(value)} />
 			<MathsQuestion mathsAnswer={mathsAnswer} onChangeMathsAnswer={(value) => setMathsAnswer(value)} />
 			<ReasonsForSparing reasonsForSparing={reasonsForSparing} onChangeReasonsForSparing={(value) => setReasonsForSparing(value)} />
+			<SubmitButton />
 		</section>
 	);
 };

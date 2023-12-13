@@ -33,7 +33,7 @@ body {
 	display: inline-block;
   }
   
-  input[type=submit] {
+  input[type=submit], button {
 	background-color: #04AA6D;
 	color: white;
 	padding: 1% 2%;
