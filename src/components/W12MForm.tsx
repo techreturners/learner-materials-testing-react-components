@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import W12MHeader from './W12MHeader';
-import {SpeciesName} from './species_name';
+import {TextInput} from './text_input';
 import { PlanetName } from './planet_name';
 import { NumberOfBeings } from './number_of_beings';
 import { ReasonsForSparing } from './reasons_for_sparing';
@@ -8,6 +8,7 @@ import { MathsQuestion } from './maths_question';
 import { FormOutput } from './form_output';
 import { ChangeEvent, MouseEvent } from 'react';
 import { SubmitButton } from './submit_button';
+import { validateSpeciesName } from '../validate/validate_species_name';
 
 const W12MForm = () => {
 	
@@ -41,7 +42,8 @@ const W12MForm = () => {
 		<section className='w12MForm'>
 			<W12MHeader />
 			<div className = "col-50-left">
-			<SpeciesName speciesName={input.speciesName} onChangeSpeciesName={handleChange} />
+			<TextInput title = "Species Name" role = "speciesName" 
+			value={input.speciesName} onChange={handleChange} validate={validateSpeciesName} />
 			<PlanetName planetName={input.planetName} onChangePlanetName={handleChange} />
 			<NumberOfBeings numberOfBeings={input.numberOfBeings} onChangeNumberOfBeings={handleChange} />
 			<MathsQuestion mathsAnswer={input.mathsAnswer} onChangeMathsAnswer={handleChange} />

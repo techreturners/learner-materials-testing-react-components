@@ -1,14 +1,17 @@
 import { render, screen } from '@testing-library/react';
-import { SpeciesName } from './species_name';
+import { TextInput } from './text_input';
 import { fireEvent } from '@testing-library/react';
 
 test('renders form label for species name', () => {
 
 	const requiredProps = {
-		speciesName: "Woman",
-		onChangeSpeciesName: () => {}
+		title: "Species Name",
+		role: "speciesName",
+		value: "Woman",
+		onChange: () => {},
+		validate: () => []
 	};
-	render(<SpeciesName {...requiredProps}/>);
+	render(<TextInput {...requiredProps}/>);
 
 	const labelText = screen.getByText(
 		/Species Name/i
@@ -19,11 +22,14 @@ test('renders form label for species name', () => {
 test('Species name Input field exists', async () => {
     //Arrange
 	const requiredProps = {
-		speciesName: "",
-		onChangeSpeciesName: () => {}
+		title: "Species Name",
+		role: "speciesName",
+		value: "",
+		onChange: () => {},
+		validate: () => []
 	};
 	//Act
-	render(<SpeciesName {...requiredProps}/>);
+	render(<TextInput {...requiredProps}/>);
 	const inputField: HTMLInputElement = screen.getByLabelText("Species Name");
 	//Assert
     expect(inputField).toBeInTheDocument();
@@ -32,11 +38,14 @@ test('Species name Input field exists', async () => {
 test('Species name input field displays value passed in through props', async () => {
     //Arrange
 	const requiredProps = {
-		speciesName: "Woman",
-		onChangeSpeciesName: () => {}
+		title: "Species Name",
+		role: "speciesName",
+		value: "Woman",
+		onChange: () => {},
+		validate: () => []
 	};
 	//Act
-	render(<SpeciesName {...requiredProps}/>);
+	render(<TextInput {...requiredProps}/>);
 	const inputField: HTMLInputElement = screen.getByLabelText("Species Name");
 	//Assert
 	expect(inputField.value).toBe("Woman");
@@ -46,11 +55,14 @@ test('Species name input field call its onChange function', async () => {
     //Arrange
 	const mockSubmit = jest.fn();
 	const requiredProps = {
-		speciesName: "",
-		onChangeSpeciesName: mockSubmit
+		title: "Species Name",
+		role: "speciesName",
+		value: "",
+		onChange: mockSubmit,
+		validate: () => []
 	};
 	//Act
-	render(<SpeciesName {...requiredProps}/>);
+	render(<TextInput {...requiredProps}/>);
 	const inputField: HTMLInputElement = screen.getByLabelText("Species Name");
 	//Assert
 	if (inputField) {
