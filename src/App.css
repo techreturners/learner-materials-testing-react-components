@@ -78,3 +78,11 @@ body {
 	clear: both;
   }
 
+  .error {
+	color: #ff0000
+  }
+
+  .valid {
+	color:  #2b1a1a;
+  }
+

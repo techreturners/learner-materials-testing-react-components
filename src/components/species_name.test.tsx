@@ -9,7 +9,9 @@ test('renders form label for species name', () => {
 		role: "speciesName",
 		value: "Woman",
 		onChange: () => {},
-		validate: () => []
+		regex: /^[a-z]{3,23}$/gi,
+		message: "",
+		submitted: false
 	};
 	render(<TextInput {...requiredProps}/>);
 
@@ -26,7 +28,9 @@ test('Species name Input field exists', async () => {
 		role: "speciesName",
 		value: "",
 		onChange: () => {},
-		validate: () => []
+		regex: /^[a-z]{3,23}$/gi,
+		message: "",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -42,7 +46,9 @@ test('Species name input field displays value passed in through props', async ()
 		role: "speciesName",
 		value: "Woman",
 		onChange: () => {},
-		validate: () => []
+		regex: /^[a-z]{3,23}$/gi,
+		message: "",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -53,13 +59,15 @@ test('Species name input field displays value passed in through props', async ()
 
 test('Species name input field call its onChange function', async () => {
     //Arrange
-	const mockSubmit = jest.fn();
+	const mockChange = jest.fn();
 	const requiredProps = {
 		title: "Species Name",
 		role: "speciesName",
 		value: "",
-		onChange: mockSubmit,
-		validate: () => []
+		onChange: mockChange,
+		regex: /^[a-z]{3,23}$/gi,
+		message: "",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -68,5 +76,5 @@ test('Species name input field call its onChange function', async () => {
 	if (inputField) {
 		fireEvent.change(inputField, {target: {value: 'W'}})
 	}
-	expect(mockSubmit).toBeCalled();
+	expect(mockChange).toBeCalled();
 });

@@ -1,27 +1,45 @@
 import { ChangeEventHandler } from "react";
 import { ErrorMessage } from "../validate/error_message";
+import { validateTextInput } from "../validate/validate_text_input";
 
 interface TextInputProps {
 	title: string;
 	role: string;
 	value: string;
 	onChange: ChangeEventHandler<HTMLInputElement>;
-	validate: (value: string) => Array<string>;
+	regex: RegExp;
+	message: string;
+	submitted: boolean;
 }
 
 export const TextInput : React.FC<TextInputProps> = (props) => {
+let message = "";
+if (props.submitted) {
+	const errorMessages = validateTextInput(props.title, props.regex, props.value, props.message);
+	message = errorMessages.reduce((acc: string, message: string) => acc+" and "+message, "")
+	.replace(" and ", "");
+	//console.log(props.title, message);
+}
 
-const errorMessages = props.validate(props.value);
 return (
-    <>
+    	<>
         <label htmlFor={props.role}>{props.title}</label>
+		{message === "" &&
         <input id={props.role}
+			className = "valid"
 					type='text'
-					value={props.value}
+					value= {props.value}
 					onChange={props.onChange} 
 		/>
-		{errorMessages.length === 0 && errorMessages.map((message: string, index: number) => 
-		<ErrorMessage key = {index.toString()} message={message} />)}
+		}
+		{message !== "" &&
+        <input id={props.role}
+			className = "error"
+					type='text'
+					value= {message}
+					onChange={props.onChange} 
+		/>
+		}
     </> 
 	);
 }
