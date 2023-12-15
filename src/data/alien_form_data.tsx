@@ -1,12 +1,12 @@
 
-export type formInputObject = {
+export type FormInputObject = {
     title: string;
     role: string;
     regex: RegExp;
     errorMessage: string;
 }
 
-export const textInput: Array<formInputObject> = [
+export const formInput: Array<FormInputObject> = [
     {
     title: "Species Name",
     role: "speciesName",
@@ -24,23 +24,17 @@ export const textInput: Array<formInputObject> = [
     role: "numberOfBeings",
     regex: /^[0-9]{10,}$/g,
     errorMessage: "Numbers ONLY. Must be at least 1,000,000,000"
-    }
-];
-
-export const selectInput: Array<formInputObject> = [
+    },
     {
     title: "What is 2 + 2?",
     role: "mathsAnswer",
-    regex: /^[a-z]{3,23}$/gi,
+    regex: /^4{1}$/,
     errorMessage: `Error: "4" must be selected`
-    }
-];
-
-export const textAreaInput: Array<formInputObject> = [
+    },
     {
     title: "Reasons For Sparing",
     role: "reasonsForSparing",
-    regex: /^[a-z]{3,23}$/gi,
+    regex: /^.{17,153}$/gi,
     errorMessage: "Must be between 17 and 153 characters"
     }
 ];

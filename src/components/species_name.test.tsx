@@ -11,7 +11,8 @@ test('renders form label for species name', () => {
 		onChange: () => {},
 		regex: /^[a-z]{3,23}$/gi,
 		message: "",
-		submitted: false
+		submitted: false,
+		validate: () =>  ""
 	};
 	render(<TextInput {...requiredProps}/>);
 
@@ -30,7 +31,8 @@ test('Species name Input field exists', async () => {
 		onChange: () => {},
 		regex: /^[a-z]{3,23}$/gi,
 		message: "",
-		submitted: false
+		submitted: false,
+		validate: () => ""
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -48,7 +50,8 @@ test('Species name input field displays value passed in through props', async ()
 		onChange: () => {},
 		regex: /^[a-z]{3,23}$/gi,
 		message: "",
-		submitted: false
+		submitted: false,
+		validate: () => ""
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -67,7 +70,8 @@ test('Species name input field call its onChange function', async () => {
 		onChange: mockChange,
 		regex: /^[a-z]{3,23}$/gi,
 		message: "",
-		submitted: false
+		submitted: false,
+		validate: () => ""
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
