@@ -104,7 +104,7 @@ test('Number of Beings output displays error message if submitted value is inval
 	expect(mockValidate()).toStrictEqual(["Numbers ONLY. Must be at least 1,000,000,000"]);
 });
 
-test('Maths question output displays error message if answer is incorrect', () => {
+test('Maths answer validation returns error message if answer is incorrect', () => {
     //Arrange
 	const mockValidate = jest.fn();
 	const requiredProps = {
@@ -123,5 +123,26 @@ test('Maths question output displays error message if answer is incorrect', () =
 	//Assert
 	expect(mockValidate).toBeCalled();
 	expect(mockValidate()).toStrictEqual([`"4" must be selected`]);
+});
+
+test('Maths answer validation returns no error message if answer is correct', () => {
+    //Arrange
+	const mockValidate = jest.fn();
+	const requiredProps = {
+		title: "What is 2 + 2?",
+		role: "mathsAnswer",
+		value: "4",
+		regex: /^4{1}$/,
+		message: '"4" must be selected',
+		submitted: true,
+		validate: mockValidate,
+		options: ["Not 4", "0", "4", "99", "4 million"]
+	};
+	//Act
+	mockValidate.mockReturnValue([]);
+	render(<Output {...requiredProps}/>)
+	//Assert
+	expect(mockValidate).toBeCalled();
+	expect(mockValidate()).toStrictEqual([]);
 });
 
