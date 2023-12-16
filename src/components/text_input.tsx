@@ -1,13 +1,7 @@
-import { ChangeEventHandler} from "react";
-interface TextInputProps {
-	title: string;
-	role: string;
-	value: string;
+import { InputProps } from "./W12MForm";
+import { ChangeEventHandler} from 'react';
+export interface TextInputProps extends InputProps {
 	onChange: ChangeEventHandler<HTMLInputElement>;
-	regex: RegExp;
-	message: string;
-	submitted: boolean;
-	validate: (title:string, regex: RegExp, value: string, message: string) => string;
 }
 
 export const TextInput : React.FC<TextInputProps> = (props) => {

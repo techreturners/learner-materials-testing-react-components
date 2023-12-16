@@ -1,6 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { TextInput } from './text_input';
-import { fireEvent } from '@testing-library/react';
 
 test('renders form label for species name', () => {
 

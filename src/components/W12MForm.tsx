@@ -1,13 +1,21 @@
-import { useState} from 'react';
+import { useState, ChangeEvent, MouseEvent} from 'react';
 import W12MHeader from './W12MHeader';
 import {TextInput} from './text_input';
+import { SelectInput } from './select_input';
 import { ReasonsForSparing } from './reasons_for_sparing';
-import { MathsQuestion } from './maths_question';
 import { Output } from './output';
-import { ChangeEvent, MouseEvent } from 'react';
 import { SubmitButton } from './submit_button';
-import { formTextInput, formDataArray, initialValues} from '../data/alien_form_data';
+import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, initialValues} from '../data/alien_form_data';
 import { validateTextInput } from "../validate/validate_text_input";
+export interface InputProps {
+	title: string;
+	role: string;
+	value: string;
+	regex: RegExp;
+	message: string;
+	submitted: boolean;
+	validate: (title:string, regex: RegExp, value: string, message: string) => string;
+}
 
 export type FormInputObject = {
     title: string;
@@ -52,7 +60,8 @@ const W12MForm = () => {
 
 			{formTextInput.map((field: FormInputObject, i: number) => 
 
-			<TextInput key = {i.toString()}
+			<TextInput 
+				key = {i.toString()}
 				title = {formTextInput[i].title} 
 				regex={formTextInput[i].regex} 
 				message = {formTextInput[i].errorMessage}
@@ -64,7 +73,21 @@ const W12MForm = () => {
 			/>)
 			}
 
-			<MathsQuestion mathsAnswer={input.mathsAnswer} onChangeMathsAnswer={handleChange} />
+			{formSelectInput.map((field: FormInputObject, i: number) => 
+
+				<SelectInput
+				key = {i.toString()}
+				title = {formSelectInput[i].title} 
+				regex={formSelectInput[i].regex} 
+				message = {formSelectInput[i].errorMessage}
+				value={input[formSelectInput[i].role]} 
+				onChange={handleChange} 
+				submitted={submitted}
+				validate = {validateTextField} 
+				role = {formTextInput[i].role} 
+				/>)
+			}
+
 			<ReasonsForSparing reasonsForSparing={input.reasonsForSparing} onChangeReasonsForSparing={handleChange} />
 
 			<SubmitButton buttonText = "Submit Application" onSubmitHandler = {handleSubmit}/>

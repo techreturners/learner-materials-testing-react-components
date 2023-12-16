@@ -1,14 +1,19 @@
-import { render, screen } from '@testing-library/react';
-import { MathsQuestion } from './maths_question';
-import { fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { SelectInput } from './select_input';
 
 test('renders form label for maths question', () => {
 
 	const requiredProps = {
-		mathsAnswer: "4",
-		onChangeMathsAnswer: () => {}
+		title: "What is 2 + 2?",
+		role: "mathsAnswer",
+		value: "4",
+		onChange: () => {},
+		regex: /^4{1}$/,
+		message: "",
+		submitted: false,
+		validate: () =>  ""
 	};
-	render(<MathsQuestion {...requiredProps}/>);
+	render(<SelectInput {...requiredProps}/>);
 
 	const labelText = screen.getByText(
 		"What is 2 + 2?"
@@ -19,11 +24,17 @@ test('renders form label for maths question', () => {
 test('Maths question Input field exists', async () => {
     //Arrange
 	const requiredProps = {
-		mathsAnswer: "4",
-		onChangeMathsAnswer: () => {}
+		title: "What is 2 + 2?",
+		role: "mathsAnswer",
+		value: "4",
+		onChange: () => {},
+		regex: /^4{1}$/,
+		message: "",
+		submitted: false,
+		validate: () =>  ""
 	};
 	//Act
-	render(<MathsQuestion {...requiredProps}/>);
+	render(<SelectInput {...requiredProps}/>);
 	const selectInput: HTMLSelectElement = screen.getByLabelText("What is 2 + 2?");
 	//Assert
     expect(selectInput).toBeInTheDocument();
@@ -32,11 +43,17 @@ test('Maths question Input field exists', async () => {
 test('Maths question input field displays value passed in through props', async () => {
     //Arrange
 	const requiredProps = {
-		mathsAnswer: "99",
-		onChangeMathsAnswer: () => {}
+		title: "What is 2 + 2?",
+		role: "mathsAnswer",
+		value: "99",
+		onChange: () => {},
+		regex: /^4{1}$/,
+		message: "",
+		submitted: false,
+		validate: () =>  ""
 	};
 	//Act
-	render(<MathsQuestion {...requiredProps}/>);
+	render(<SelectInput {...requiredProps}/>);
 	const selectInput: HTMLSelectElement = screen.getByLabelText("What is 2 + 2?");
 	//Assert
 	expect(selectInput.value).toBe("99");
@@ -44,17 +61,23 @@ test('Maths question input field displays value passed in through props', async 
 
 test('Maths question input field call its onChange function', async () => {
     //Arrange
-	const mockSubmit = jest.fn();
+	const mockChange = jest.fn();
 	const requiredProps = {
-		mathsAnswer: "",
-		onChangeMathsAnswer: mockSubmit
+		title: "What is 2 + 2?",
+		role: "mathsAnswer",
+		value: "",
+		onChange: mockChange,
+		regex: /^4{1}$/,
+		message: "",
+		submitted: false,
+		validate: () =>  ""
 	};
 	//Act
-	render(<MathsQuestion {...requiredProps}/>);
+	render(<SelectInput {...requiredProps}/>);
 	const selectInput: HTMLSelectElement = screen.getByLabelText("What is 2 + 2?");
 	//Assert
 	if (selectInput) {
 		fireEvent.change(selectInput, {target: {value: '4'}})
 	}
-	expect(mockSubmit).toBeCalled();
+	expect(mockChange).toBeCalled();
 });
