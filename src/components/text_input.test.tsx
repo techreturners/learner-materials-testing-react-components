@@ -10,7 +10,7 @@ test('renders form label for species name', () => {
 		value: "Woman",
 		onChange: () => {},
 		regex: /^[a-z]{3,23}$/gi,
-		message: "",
+		message: "Must be between 3 and 23 characters. No numbers or special characters allowed!",
 		submitted: false,
 		validate: () =>  ""
 	};
@@ -22,7 +22,7 @@ test('renders form label for species name', () => {
 	expect(labelText).toBeInTheDocument();
 });
 
-test('Species name Input field exists', async () => {
+test('Species name Input field exists', () => {
     //Arrange
 	const requiredProps: TextInputProps = {
 		title: "Species Name",
@@ -30,7 +30,7 @@ test('Species name Input field exists', async () => {
 		value: "",
 		onChange: () => {},
 		regex: /^[a-z]{3,23}$/gi,
-		message: "",
+		message: "Must be between 3 and 23 characters. No numbers or special characters allowed!",
 		submitted: false,
 		validate: () => ""
 	};
@@ -41,7 +41,7 @@ test('Species name Input field exists', async () => {
     expect(inputField).toBeInTheDocument();
 });
 
-test('Species name input field displays value passed in through props', async () => {
+test('Species name input field displays value passed in through props', () => {
     //Arrange
 	const requiredProps: TextInputProps = {
 		title: "Species Name",
@@ -49,7 +49,7 @@ test('Species name input field displays value passed in through props', async ()
 		value: "Woman",
 		onChange: () => {},
 		regex: /^[a-z]{3,23}$/gi,
-		message: "",
+		message: "Must be between 3 and 23 characters. No numbers or special characters allowed!",
 		submitted: false,
 		validate: () => ""
 	};
@@ -60,7 +60,7 @@ test('Species name input field displays value passed in through props', async ()
 	expect(inputField.value).toBe("Woman");
 });
 
-test('Species name input field call its onChange function', async () => {
+test('Species name input field call its onChange function', () => {
     //Arrange
 	const mockChange = jest.fn();
 	const requiredProps: TextInputProps = {
@@ -69,7 +69,7 @@ test('Species name input field call its onChange function', async () => {
 		value: "",
 		onChange: mockChange,
 		regex: /^[a-z]{3,23}$/gi,
-		message: "",
+		message: "Must be between 3 and 23 characters. No numbers or special characters allowed!",
 		submitted: false,
 		validate: () => ""
 	};
@@ -92,7 +92,7 @@ test('renders form label for planet name', () => {
 		value: "Mars",
 		onChange: () => {},
 		regex: /^[a-z0-9]{2,49}$/gi,
-		message: "",
+		message: "Must be between 2 and 49 characters. Numbers are allowed, but no special characters.",
 		submitted: false,
 		validate: () =>  ""
 	};
@@ -104,7 +104,7 @@ test('renders form label for planet name', () => {
 	expect(labelText).toBeInTheDocument();
 });
 
-test('Planet name Input field exists', async () => {
+test('Planet name Input field exists', () => {
     //Arrange
 	const requiredProps: TextInputProps = {
 		title: "Planet Name",
@@ -112,7 +112,7 @@ test('Planet name Input field exists', async () => {
 		value: "",
 		onChange: () => {},
 		regex: /^[a-z0-9]{2,49}$/gi,
-		message: "",
+		message: "Must be between 2 and 49 characters. Numbers are allowed, but no special characters.",
 		submitted: false,
 		validate: () =>  ""
 	};
@@ -123,7 +123,7 @@ test('Planet name Input field exists', async () => {
     expect(inputField).toBeInTheDocument();
 });
 
-test('Planet name input field displays value passed in through props', async () => {
+test('Planet name input field displays value passed in through props', () => {
     //Arrange
 	const requiredProps: TextInputProps = {
 		title: "Planet Name",
@@ -131,7 +131,7 @@ test('Planet name input field displays value passed in through props', async () 
 		value: "Mars",
 		onChange: () => {},
 		regex: /^[a-z0-9]{2,49}$/gi,
-		message: "",
+		message: "Must be between 2 and 49 characters. Numbers are allowed, but no special characters.",
 		submitted: false,
 		validate: () =>  ""
 	};
@@ -142,7 +142,7 @@ test('Planet name input field displays value passed in through props', async () 
 	expect(inputField.value).toBe("Mars");
 });
 
-test('Planet name input field calls its onChange function', async () => {
+test('Planet name input field calls its onChange function', () => {
     //Arrange
 	const mockChange = jest.fn();
 	const requiredProps: TextInputProps = {
@@ -151,7 +151,7 @@ test('Planet name input field calls its onChange function', async () => {
 		value: "",
 		onChange: mockChange,
 		regex: /^[a-z0-9]{2,49}$/gi,
-		message: "",
+		message: "Must be between 2 and 49 characters. Numbers are allowed, but no special characters.",
 		submitted: false,
 		validate: () =>  ""
 	};
@@ -172,7 +172,7 @@ test('renders form label for number of beings', () => {
 		value: "999",
 		onChange: () => {},
 		regex: /^[0-9]{10,}$/g,
-		message: "",
+		message: "Numbers ONLY. Must be at least 1,000,000,000",
 		submitted: false,
 		validate: () =>  ""
 	};
@@ -184,7 +184,7 @@ test('renders form label for number of beings', () => {
 	expect(labelText).toBeInTheDocument();
 });
 
-test('Number of Beings Input field exists', async () => {
+test('Number of Beings Input field exists', () => {
     //Arrange
 	const requiredProps: TextInputProps = {
 		title: "Number of Beings",
@@ -192,7 +192,7 @@ test('Number of Beings Input field exists', async () => {
 		value: "",
 		onChange: () => {},
 		regex: /^[0-9]{10,}$/g,
-		message: "",
+		message: "Numbers ONLY. Must be at least 1,000,000,000",
 		submitted: false,
 		validate: () =>  ""
 	};
@@ -203,7 +203,7 @@ test('Number of Beings Input field exists', async () => {
     expect(inputField).toBeInTheDocument();
 });
 
-test('Number of Beings input field displays value passed in through props', async () => {
+test('Number of Beings input field displays value passed in through props', () => {
     //Arrange
 	const requiredProps: TextInputProps = {
 		title: "Number of Beings",
@@ -211,7 +211,7 @@ test('Number of Beings input field displays value passed in through props', asyn
 		value: "100000000000",
 		onChange: () => {},
 		regex: /^[0-9]{10,}$/g,
-		message: "",
+		message: "Numbers ONLY. Must be at least 1,000,000,000",
 		submitted: false,
 		validate: () =>  ""
 	};
@@ -222,7 +222,7 @@ test('Number of Beings input field displays value passed in through props', asyn
 	expect(inputField.value).toBe("100000000000");
 });
 
-test('Number of Beings input field calls its onChange function', async () => {
+test('Number of Beings input field calls its onChange function', () => {
     //Arrange
 	const mockChange = jest.fn();
 	const requiredProps: TextInputProps = {
@@ -231,7 +231,7 @@ test('Number of Beings input field calls its onChange function', async () => {
 		value: "",
 		onChange: mockChange,
 		regex: /^[0-9]{10,}$/g,
-		message: "",
+		message: "Numbers ONLY. Must be at least 1,000,000,000",
 		submitted: false,
 		validate: () =>  ""
 	};
