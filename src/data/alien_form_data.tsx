@@ -1,3 +1,4 @@
+import { InitialValue } from "../components/W12MForm";
 
 export type FormInputObject = {
     title: string;
@@ -6,7 +7,7 @@ export type FormInputObject = {
     errorMessage: string;
 }
 
-export const formInput: Array<FormInputObject> = [
+export const formTextInput: Array<FormInputObject> = [
     {
     title: "Species Name",
     role: "speciesName",
@@ -24,13 +25,19 @@ export const formInput: Array<FormInputObject> = [
     role: "numberOfBeings",
     regex: /^[0-9]{10,}$/g,
     errorMessage: "Numbers ONLY. Must be at least 1,000,000,000"
-    },
+    }
+];
+
+export const formSelectInput: Array<FormInputObject> = [
     {
     title: "What is 2 + 2?",
     role: "mathsAnswer",
     regex: /^4{1}$/,
     errorMessage: `Error: "4" must be selected`
-    },
+    }
+];
+
+export const formTextAreaInput: Array<FormInputObject> = [
     {
     title: "Reasons For Sparing",
     role: "reasonsForSparing",
@@ -38,3 +45,7 @@ export const formInput: Array<FormInputObject> = [
     errorMessage: "Must be between 17 and 153 characters"
     }
 ];
+
+export const formDataArray = [...formTextInput, ...formSelectInput, ...formTextAreaInput];
+export const initialValues: InitialValue = formDataArray.reduce
+((acc, field) => {return {...acc, [field.role]: ""}}, {});

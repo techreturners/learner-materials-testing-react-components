@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState} from 'react';
 import W12MHeader from './W12MHeader';
 import {TextInput} from './text_input';
 import { ReasonsForSparing } from './reasons_for_sparing';
@@ -6,22 +6,19 @@ import { MathsQuestion } from './maths_question';
 import { Output } from './output';
 import { ChangeEvent, MouseEvent } from 'react';
 import { SubmitButton } from './submit_button';
-import { formInput} from '../data/alien_form_data';
-import { validateTextInput } from "../validate/validate_text_input"
+import { formTextInput, formDataArray, initialValues} from '../data/alien_form_data';
+import { validateTextInput } from "../validate/validate_text_input";
 
-type InitialValue = {[key: string]: string};
+export type FormInputObject = {
+    title: string;
+    role: string;
+    regex: RegExp;
+    errorMessage: string;
+}
+export type InitialValue = {[key: string]: string};
+
 const W12MForm = () => {
 	
-	const initialValues: InitialValue = {
-		speciesName: "", 
-		planetName: "", 
-		numberOfBeings: "",
-		mathsAnswer: "",
-		reasonsForSparing: ""
-	}
-
-	const keys = Object.keys(initialValues);
-
 	const [input, setInput] = useState({...initialValues});
 	const [submitted, setSubmitted] = useState(false);
 
@@ -52,44 +49,38 @@ const W12MForm = () => {
 		<section className='w12MForm'>
 			<W12MHeader />
 			<div className = "col-50-left">
-			<TextInput title = {formInput[0].title} role = {formInput[0].role} 
-			regex={formInput[0].regex} message = {formInput[0].errorMessage}
-			value={input[keys[0]]} onChange={handleChange} submitted={submitted}
-			validate = {validateTextField}/>
 
-			<TextInput title = {formInput[1].title} role = {formInput[1].role} 
-			regex={formInput[1].regex} message = {formInput[1].errorMessage} 
-			value={input[keys[1]]} onChange={handleChange} submitted={submitted}
-			validate = {validateTextField}/>
+			{formTextInput.map((field: FormInputObject, i: number) => 
 
-			<TextInput title = {formInput[2].title} role = {formInput[2].role} 
-			regex={formInput[2].regex} message = {formInput[2].errorMessage} 
-			value={input[keys[2]]} onChange={handleChange} submitted={submitted}
-			validate = {validateTextField}/>
+			<TextInput key = {i.toString()}
+				title = {formTextInput[i].title} 
+				regex={formTextInput[i].regex} 
+				message = {formTextInput[i].errorMessage}
+				value={input[formTextInput[i].role]} 
+				onChange={handleChange} 
+				submitted={submitted}
+				validate = {validateTextField} 
+				role = {formTextInput[i].role} 
+			/>)
+			}
 
 			<MathsQuestion mathsAnswer={input.mathsAnswer} onChangeMathsAnswer={handleChange} />
-			
 			<ReasonsForSparing reasonsForSparing={input.reasonsForSparing} onChangeReasonsForSparing={handleChange} />
 
 			<SubmitButton buttonText = "Submit Application" onSubmitHandler = {handleSubmit}/>
-
 			</div>
-			<Output title = {formInput[0].title} value = {input[keys[0]]} message = {formInput[0].errorMessage}
-			role = {formInput[0].role} regex={formInput[0].regex} validate = {validateTextField} submitted={submitted}/>
 
-			<Output title = {formInput[1].title} value = {input[keys[1]]} message = {formInput[1].errorMessage}
-			role = {formInput[1].role} regex={formInput[1].regex} validate = {validateTextField} submitted={submitted}/>
-
-			<Output title = {formInput[2].title} value = {input[keys[2]]} message = {formInput[2].errorMessage}
-			role = {formInput[2].role} regex={formInput[2].regex} validate = {validateTextField} submitted={submitted}/>
-
-			<Output title = {formInput[3].title} value = {input[keys[3]]} message = {formInput[3].errorMessage}
-			role = {formInput[3].role} regex={formInput[3].regex} validate = {validateTextField} submitted={submitted}/>
-			
-			<Output title = {formInput[4].title} value= {input[keys[4]]} message = {formInput[4].errorMessage}
-			role = {formInput[4].role} regex={formInput[4].regex} validate = {validateTextField} submitted={submitted}/>
+			{formDataArray.map((field: FormInputObject, i: number) => 
+			<Output 
+				key = {i.toString()}
+				title = {formDataArray[i].title} 
+				value = {input[formDataArray[i].role]} 
+				message = {formDataArray[i].errorMessage}
+				role = {formDataArray[i].role} 
+				regex={formDataArray[i].regex} 
+				validate = {validateTextField} submitted={submitted}/>
+			)}
 		</section>	
 	);
 };
-
 export default W12MForm;
