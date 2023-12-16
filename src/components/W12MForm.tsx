@@ -16,13 +16,16 @@ export interface InputProps {
 	submitted: boolean;
 	validate: (title:string, regex: RegExp, value: string, message: string) => string;
 }
-
-export type FormInputObject = {
+export interface FormInputObject {
     title: string;
     role: string;
     regex: RegExp;
     errorMessage: string;
 }
+export interface FormSelectInputObject extends FormInputObject {
+    options: Array<string>
+}
+
 export type InitialValue = {[key: string]: string};
 
 const W12MForm = () => {
@@ -84,7 +87,8 @@ const W12MForm = () => {
 				onChange={handleChange} 
 				submitted={submitted}
 				validate = {validateTextField} 
-				role = {formTextInput[i].role} 
+				role = {formSelectInput[i].role} 
+				options = {formSelectInput[i].options}
 				/>)
 			}
 

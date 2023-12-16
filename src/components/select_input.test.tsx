@@ -1,9 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { SelectInput } from './select_input';
+import { SelectInputProps } from "../components/select_input";
 
 test('renders form label for maths question', () => {
 
-	const requiredProps = {
+	const requiredProps : SelectInputProps = {
 		title: "What is 2 + 2?",
 		role: "mathsAnswer",
 		value: "4",
@@ -11,7 +12,8 @@ test('renders form label for maths question', () => {
 		regex: /^4{1}$/,
 		message: "",
 		submitted: false,
-		validate: () =>  ""
+		validate: () =>  "",
+		options: ["Not 4", "0", "4", "99", "4 million"]
 	};
 	render(<SelectInput {...requiredProps}/>);
 
@@ -23,7 +25,7 @@ test('renders form label for maths question', () => {
 
 test('Maths question Input field exists', async () => {
     //Arrange
-	const requiredProps = {
+	const requiredProps: SelectInputProps = {
 		title: "What is 2 + 2?",
 		role: "mathsAnswer",
 		value: "4",
@@ -31,7 +33,8 @@ test('Maths question Input field exists', async () => {
 		regex: /^4{1}$/,
 		message: "",
 		submitted: false,
-		validate: () =>  ""
+		validate: () =>  "",
+		options: ["Not 4", "0", "4", "99", "4 million"]
 	};
 	//Act
 	render(<SelectInput {...requiredProps}/>);
@@ -42,7 +45,7 @@ test('Maths question Input field exists', async () => {
 
 test('Maths question input field displays value passed in through props', async () => {
     //Arrange
-	const requiredProps = {
+	const requiredProps : SelectInputProps = {
 		title: "What is 2 + 2?",
 		role: "mathsAnswer",
 		value: "99",
@@ -50,7 +53,8 @@ test('Maths question input field displays value passed in through props', async 
 		regex: /^4{1}$/,
 		message: "",
 		submitted: false,
-		validate: () =>  ""
+		validate: () =>  "",
+		options: ["Not 4", "0", "4", "99", "4 million"]
 	};
 	//Act
 	render(<SelectInput {...requiredProps}/>);
@@ -62,7 +66,8 @@ test('Maths question input field displays value passed in through props', async 
 test('Maths question input field call its onChange function', async () => {
     //Arrange
 	const mockChange = jest.fn();
-	const requiredProps = {
+	
+	const requiredProps : SelectInputProps = {
 		title: "What is 2 + 2?",
 		role: "mathsAnswer",
 		value: "",
@@ -70,7 +75,8 @@ test('Maths question input field call its onChange function', async () => {
 		regex: /^4{1}$/,
 		message: "",
 		submitted: false,
-		validate: () =>  ""
+		validate: () =>  "",
+		options: ["Not 4", "0", "4", "99", "4 million"]
 	};
 	//Act
 	render(<SelectInput {...requiredProps}/>);

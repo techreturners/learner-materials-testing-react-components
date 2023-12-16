@@ -3,6 +3,7 @@ import { ChangeEventHandler} from 'react';
 
 export interface SelectInputProps extends InputProps{
 	onChange: ChangeEventHandler<HTMLSelectElement>;
+	options: Array<string>;
 }
 
 export const SelectInput : React.FC<SelectInputProps> = (props) => {

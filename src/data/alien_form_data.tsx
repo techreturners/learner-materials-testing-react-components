@@ -1,11 +1,5 @@
 import { InitialValue } from "../components/W12MForm";
-
-export type FormInputObject = {
-    title: string;
-    role: string;
-    regex: RegExp;
-    errorMessage: string;
-}
+import { FormInputObject, FormSelectInputObject } from "../components/W12MForm";
 
 export const formTextInput: Array<FormInputObject> = [
     {
@@ -28,12 +22,13 @@ export const formTextInput: Array<FormInputObject> = [
     }
 ];
 
-export const formSelectInput: Array<FormInputObject> = [
+export const formSelectInput: Array<FormSelectInputObject> = [
     {
     title: "What is 2 + 2?",
     role: "mathsAnswer",
     regex: /^4{1}$/,
-    errorMessage: `Error: "4" must be selected`
+    errorMessage: `Error: "4" must be selected`,
+    options: ["Not 4", "0", "4", "99", "4 million"]
     }
 ];
 

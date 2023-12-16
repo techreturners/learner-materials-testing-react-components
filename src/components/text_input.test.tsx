@@ -1,9 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TextInput } from './text_input';
+import { TextInputProps } from "./text_input";
 
 test('renders form label for species name', () => {
 
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Species Name",
 		role: "speciesName",
 		value: "Woman",
@@ -23,7 +24,7 @@ test('renders form label for species name', () => {
 
 test('Species name Input field exists', async () => {
     //Arrange
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Species Name",
 		role: "speciesName",
 		value: "",
@@ -42,7 +43,7 @@ test('Species name Input field exists', async () => {
 
 test('Species name input field displays value passed in through props', async () => {
     //Arrange
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Species Name",
 		role: "speciesName",
 		value: "Woman",
@@ -62,7 +63,7 @@ test('Species name input field displays value passed in through props', async ()
 test('Species name input field call its onChange function', async () => {
     //Arrange
 	const mockChange = jest.fn();
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Species Name",
 		role: "speciesName",
 		value: "",
@@ -85,7 +86,7 @@ test('Species name input field call its onChange function', async () => {
 
 test('renders form label for planet name', () => {
 
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Planet Name",
 		role: "planetName",
 		value: "Mars",
@@ -105,7 +106,7 @@ test('renders form label for planet name', () => {
 
 test('Planet name Input field exists', async () => {
     //Arrange
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Planet Name",
 		role: "planetName",
 		value: "",
@@ -124,7 +125,7 @@ test('Planet name Input field exists', async () => {
 
 test('Planet name input field displays value passed in through props', async () => {
     //Arrange
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Planet Name",
 		role: "planetName",
 		value: "Mars",
@@ -144,7 +145,7 @@ test('Planet name input field displays value passed in through props', async () 
 test('Planet name input field calls its onChange function', async () => {
     //Arrange
 	const mockChange = jest.fn();
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Planet Name",
 		role: "planetName",
 		value: "",
@@ -165,7 +166,7 @@ test('Planet name input field calls its onChange function', async () => {
 });
 
 test('renders form label for number of beings', () => {
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Number of Beings",
 		role: "numberOfBeings",
 		value: "999",
@@ -185,7 +186,7 @@ test('renders form label for number of beings', () => {
 
 test('Number of Beings Input field exists', async () => {
     //Arrange
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Number of Beings",
 		role: "numberOfBeings",
 		value: "",
@@ -204,7 +205,7 @@ test('Number of Beings Input field exists', async () => {
 
 test('Number of Beings input field displays value passed in through props', async () => {
     //Arrange
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Number of Beings",
 		role: "numberOfBeings",
 		value: "100000000000",
@@ -224,7 +225,7 @@ test('Number of Beings input field displays value passed in through props', asyn
 test('Number of Beings input field calls its onChange function', async () => {
     //Arrange
 	const mockChange = jest.fn();
-	const requiredProps = {
+	const requiredProps: TextInputProps = {
 		title: "Number of Beings",
 		role: "numberOfBeings",
 		value: "",
