@@ -1,5 +1,5 @@
-import { InitialValue } from "../components/W12MForm";
-import { FormInputObject, FormSelectInputObject } from "../components/W12MForm";
+import { FormInputObject, FormSelectInputObject, FormTextAreaInputObject, InitialValue }
+from "../components/W12MForm";
 
 export const formTextInput: Array<FormInputObject> = [
     {
@@ -32,12 +32,13 @@ export const formSelectInput: Array<FormSelectInputObject> = [
     }
 ];
 
-export const formTextAreaInput: Array<FormInputObject> = [
+export const formTextAreaInput: Array<FormTextAreaInputObject> = [
     {
     title: "Reasons For Sparing",
     role: "reasonsForSparing",
     regex: /^.{17,153}$/gi,
-    errorMessage: "Must be between 17 and 153 characters"
+    errorMessage: "Must be between 17 and 153 characters",
+    size: {rows: 5, cols: 20}
     }
 ];
 

@@ -1,5 +1,6 @@
-import { InputProps } from "./W12MForm";
 import { ChangeEventHandler} from 'react';
+import { InputProps } from "./W12MForm";
+
 export interface TextInputProps extends InputProps {
 	onChange: ChangeEventHandler<HTMLInputElement>;
 }
@@ -12,7 +13,7 @@ function validateInput() {
 const errorMessage = validateInput();
 
 return (
-    <>	<label htmlFor={props.role}>{props.title} </label>
+    <>	<label htmlFor={props.role}>{props.title}</label>
         <input id ={props.role}
 			className = "valid"
 					type ='text'

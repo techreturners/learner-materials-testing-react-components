@@ -1,5 +1,5 @@
-import { InputProps } from "./W12MForm";
 import { ChangeEventHandler} from 'react';
+import { InputProps } from "./W12MForm";
 import { SelectOption } from "./select_option";
 export interface SelectInputProps extends InputProps{
 	onChange: ChangeEventHandler<HTMLSelectElement>;
