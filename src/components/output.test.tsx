@@ -104,3 +104,24 @@ test('Number of Beings output displays error message if submitted value is inval
 	expect(mockValidate()).toStrictEqual(["Numbers ONLY. Must be at least 1,000,000,000"]);
 });
 
+test('Maths question output displays error message if answer is incorrect', () => {
+    //Arrange
+	const mockValidate = jest.fn();
+	const requiredProps = {
+		title: "What is 2 + 2?",
+		role: "mathsAnswer",
+		value: "99",
+		regex: /^4{1}$/,
+		message: '"4" must be selected',
+		submitted: true,
+		validate: mockValidate,
+		options: ["Not 4", "0", "4", "99", "4 million"]
+	};
+	//Act
+	mockValidate.mockReturnValue([`"4" must be selected`]);
+	render(<Output {...requiredProps}/>)
+	//Assert
+	expect(mockValidate).toBeCalled();
+	expect(mockValidate()).toStrictEqual([`"4" must be selected`]);
+});
+

@@ -10,7 +10,7 @@ test('renders form label for maths question', () => {
 		value: "4",
 		onChange: () => {},
 		regex: /^4{1}$/,
-		message: "",
+		message: '"4" must be selected',
 		submitted: false,
 		validate: () =>  "",
 		options: ["Not 4", "0", "4", "99", "4 million"]
@@ -31,7 +31,7 @@ test('Maths question Input field exists', () => {
 		value: "4",
 		onChange: () => {},
 		regex: /^4{1}$/,
-		message: "",
+		message: '"4" must be selected',
 		submitted: false,
 		validate: () =>  "",
 		options: ["Not 4", "0", "4", "99", "4 million"]
@@ -51,7 +51,7 @@ test('Maths question input field displays value passed in through props', () => 
 		value: "99",
 		onChange: () => {},
 		regex: /^4{1}$/,
-		message: "",
+		message: '"4" must be selected',
 		submitted: false,
 		validate: () =>  "",
 		options: ["Not 4", "0", "4", "99", "4 million"]
@@ -73,7 +73,7 @@ test('Maths question input field call its onChange function', () => {
 		value: "",
 		onChange: mockChange,
 		regex: /^4{1}$/,
-		message: "",
+		message: '"4" must be selected',
 		submitted: false,
 		validate: () =>  "",
 		options: ["Not 4", "0", "4", "99", "4 million"]
