@@ -6,7 +6,5 @@ interface SubmitButtonProps {
 }
 
 export const SubmitButton : React.FC<SubmitButtonProps> = ({buttonText, onSubmitHandler}) => (
-    <>
-		<button role="submitButton" onClick={onSubmitHandler}>{buttonText}</ button>
-    </> 
+	<button role="submitButton" onClick={onSubmitHandler}>{buttonText}</ button>
 	);

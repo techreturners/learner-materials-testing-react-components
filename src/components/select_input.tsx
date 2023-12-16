@@ -1,6 +1,6 @@
 import { InputProps } from "./W12MForm";
 import { ChangeEventHandler} from 'react';
-
+import { SelectOption } from "./select_option";
 export interface SelectInputProps extends InputProps{
 	onChange: ChangeEventHandler<HTMLSelectElement>;
 	options: Array<string>;
@@ -17,14 +17,11 @@ export const SelectInput : React.FC<SelectInputProps> = (props) => {
     <>
         <label htmlFor={props.role}>{props.title}</label>
         <select id={props.role} value={props.value} onChange={props.onChange} >
-			<option value="Not 4">Not 4</option>
-			<option value="0">0</option>
-			<option value="4">4</option>
-			<option value="99">99</option>
-			<option value="4 million">4 million</option>
+			{props.options.map((option, index) => 
+			<SelectOption key = {index.toString()} optionValue ={option} />)}
 		</select>
 		{errorMessage !== "" &&
 		<span className = "error" >Error: {errorMessage}</span>
 		}
-    </> );
+    </> )
 }
