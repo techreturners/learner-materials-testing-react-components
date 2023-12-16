@@ -17,12 +17,12 @@ export const Output: React.FC<FormValuesProps> = (props) => {
     const errorMessage = validateInput();
         return (
         <>
-        {props.submitted && errorMessage === "" &&
+        {errorMessage === "" &&
          <div className="col-50-right submitted">
         <p>{props.title}: {props.value}</p>
         </div>
         }
-        {props.submitted && errorMessage !== "" &&
+        {errorMessage !== "" &&
          <div className="col-50-right pending">
         <p className = "error">{props.title}: {props.message}</p>
         </div>
