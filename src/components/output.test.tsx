@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen} from '@testing-library/react';
 import { Output } from './output';
 import { FormValuesProps } from './output';
 
@@ -26,7 +26,7 @@ test('Reasons For Sparing output does not display if there has been no submissio
 	const requiredProps = {
 		title: "Reasons For Sparing",
 		role: "reasonsForSparing",
-		value: "Because we are a special species",
+		value: "",
 		regex: /^.{17,153}$/gi,
 		message: "Must be between 17 and 153 characters",
 		validate: () =>  "",
@@ -60,7 +60,7 @@ test('Reasons For Sparing output displays if there has been submission', () => {
 	expect(text).toBeInTheDocument();
 });
 
-test('Reasons For Sparing output displays if submitted value is invalid', () => {
+test('Reasons For Sparing output displays error message if submitted value is invalid', () => {
     //Arrange
 	const mockValidate = jest.fn();
 	const requiredProps = {
@@ -78,6 +78,29 @@ test('Reasons For Sparing output displays if submitted value is invalid', () => 
 	//Assert
 	const text = screen.getByText(
 		/Must be between 17 and 153 characters/i
+	);
+	expect(mockValidate).toBeCalled();
+	expect(text).toBeInTheDocument();
+});
+
+test('Number of Beings output displays error message if submitted value is invalid', () => {
+    //Arrange
+	const mockValidate = jest.fn();
+	const requiredProps = {
+		title: "Number of Beings",
+		role: "Number of Beings",
+		value: "5",
+		regex: /^[0-9]{10,}$/g,
+		message: "Numbers ONLY. Must be at least 1,000,000,000",
+		submitted: true,
+		validate: mockValidate,
+		size: {rows: 5, cols: 20}
+	};
+	//Act
+	render(<Output {...requiredProps}/>)
+	//Assert
+	const text = screen.getByText(
+		/Numbers ONLY. Must be at least 1,000,000,000/i
 	);
 	expect(mockValidate).toBeCalled();
 	expect(text).toBeInTheDocument();

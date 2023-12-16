@@ -23,7 +23,7 @@ test('renders form label for maths question', () => {
 	expect(labelText).toBeInTheDocument();
 });
 
-test('Maths question Input field exists', async () => {
+test('Maths question Input field exists', () => {
     //Arrange
 	const requiredProps: SelectInputProps = {
 		title: "What is 2 + 2?",
@@ -43,7 +43,7 @@ test('Maths question Input field exists', async () => {
     expect(selectInput).toBeInTheDocument();
 });
 
-test('Maths question input field displays value passed in through props', async () => {
+test('Maths question input field displays value passed in through props', () => {
     //Arrange
 	const requiredProps : SelectInputProps = {
 		title: "What is 2 + 2?",
@@ -63,7 +63,7 @@ test('Maths question input field displays value passed in through props', async 
 	expect(selectInput.value).toBe("99");
 });
 
-test('Maths question input field call its onChange function', async () => {
+test('Maths question input field call its onChange function', () => {
     //Arrange
 	const mockChange = jest.fn();
 	
