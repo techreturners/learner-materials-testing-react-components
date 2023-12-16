@@ -3,7 +3,7 @@ import { Output } from './output';
 import { FormValuesProps } from './output';
 
 test('renders title for species name in output following form submission', () => {
-
+	//Arrange
 	const requiredProps: FormValuesProps = {
 		title: "Species Name",
 		value: "Woman",
@@ -13,11 +13,12 @@ test('renders title for species name in output following form submission', () =>
 		validate: () =>  "",
 		submitted: true,
 	};
+	//Act
 	render(<Output {...requiredProps}/>);
-
 	const text = screen.getByText(
 		/Species Name/i
 	);
+	//Assert
 	expect(text).toBeInTheDocument();
 });
 
@@ -53,10 +54,10 @@ test('Reasons For Sparing output displays if there has been submission', () => {
 	};
 	//Act
 	render(<Output {...requiredProps}/>)
-	//Assert
 	const text = screen.getByText(
 		/Because we are a special species/i
 	);
+	//Assert
 	expect(text).toBeInTheDocument();
 });
 
@@ -88,21 +89,18 @@ test('Number of Beings output displays error message if submitted value is inval
 	const mockValidate = jest.fn();
 	const requiredProps = {
 		title: "Number of Beings",
-		role: "Number of Beings",
+		role: "numberOfBeings",
 		value: "5",
 		regex: /^[0-9]{10,}$/g,
 		message: "Numbers ONLY. Must be at least 1,000,000,000",
 		submitted: true,
-		validate: mockValidate,
-		size: {rows: 5, cols: 20}
+		validate: mockValidate
 	};
 	//Act
+	mockValidate.mockReturnValue(["Numbers ONLY. Must be at least 1,000,000,000"]);
 	render(<Output {...requiredProps}/>)
 	//Assert
-	const text = screen.getByText(
-		/Numbers ONLY. Must be at least 1,000,000,000/i
-	);
 	expect(mockValidate).toBeCalled();
-	expect(text).toBeInTheDocument();
+	expect(mockValidate()).toStrictEqual(["Numbers ONLY. Must be at least 1,000,000,000"]);
 });
 

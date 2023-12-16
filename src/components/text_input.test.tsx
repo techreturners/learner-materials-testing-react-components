@@ -3,7 +3,7 @@ import { TextInput } from './text_input';
 import { TextInputProps } from "./text_input";
 
 test('renders form label for species name', () => {
-
+	 //Arrange
 	const requiredProps: TextInputProps = {
 		title: "Species Name",
 		role: "speciesName",
@@ -14,11 +14,12 @@ test('renders form label for species name', () => {
 		submitted: false,
 		validate: () =>  ""
 	};
+	//Act
 	render(<TextInput {...requiredProps}/>);
-
 	const labelText = screen.getByText(
 		/Species Name/i
 	);
+	//Assert
 	expect(labelText).toBeInTheDocument();
 });
 
@@ -76,16 +77,16 @@ test('Species name input field call its onChange function', () => {
 	//Act
 	render(<TextInput {...requiredProps}/>);
 	const inputField: HTMLInputElement = screen.getByLabelText("Species Name");
-	//Assert
 	if (inputField) {
 		fireEvent.change(inputField, {target: {value: 'W'}})
 	}
+	//Assert
 	expect(mockChange).toBeCalled();
 });
 
 
 test('renders form label for planet name', () => {
-
+	//Arrange
 	const requiredProps: TextInputProps = {
 		title: "Planet Name",
 		role: "planetName",
@@ -96,11 +97,12 @@ test('renders form label for planet name', () => {
 		submitted: false,
 		validate: () =>  ""
 	};
+	//Act
 	render(<TextInput {...requiredProps}/>);
-
 	const labelText = screen.getByText(
 		/Planet Name/i
 	);
+	//Assert
 	expect(labelText).toBeInTheDocument();
 });
 
@@ -158,14 +160,15 @@ test('Planet name input field calls its onChange function', () => {
 	//Act
 	render(<TextInput {...requiredProps}/>);
 	const inputField: HTMLInputElement = screen.getByLabelText("Planet Name");
-	//Assert
 	if (inputField) {
 		fireEvent.change(inputField, {target: {value: 'M'}})
 	}
+	//Assert
 	expect(mockChange).toBeCalled();
 });
 
 test('renders form label for number of beings', () => {
+	//Arrange
 	const requiredProps: TextInputProps = {
 		title: "Number of Beings",
 		role: "numberOfBeings",
@@ -177,10 +180,11 @@ test('renders form label for number of beings', () => {
 		validate: () =>  ""
 	};
 	render(<TextInput {...requiredProps}/>);
-
+	//Act
 	const labelText = screen.getByText(
 		/Number of Beings/i
 	);
+	//Assert
 	expect(labelText).toBeInTheDocument();
 });
 
@@ -238,10 +242,30 @@ test('Number of Beings input field calls its onChange function', () => {
 	//Act
 	render(<TextInput {...requiredProps}/>);
 	const inputField: HTMLInputElement = screen.getByLabelText("Number of Beings");
-	//Assert
 	if (inputField) {
 		fireEvent.change(inputField, {target: {value: '1'}})
 	}
+	//Assert
 	expect(mockChange).toBeCalled();
 });
 
+test('Number of Beings displays error message under input field if submitted value is invalid', () => {
+    //Arrange
+	const mockValidate = jest.fn();
+	const requiredProps = {
+		title: "Number of Beings",
+		role: "numberOfBeings",
+		value: "5",
+		onChange: () => {},
+		regex: /^[0-9]{10,}$/g,
+		message: "Numbers ONLY. Must be at least 1,000,000,000",
+		submitted: true,
+		validate: mockValidate
+	};
+	//Act
+	mockValidate.mockReturnValue(["Numbers ONLY. Must be at least 1,000,000,000"]);
+	render(<TextInput {...requiredProps}/>)
+	//Assert
+	expect(mockValidate).toBeCalled();
+	expect(mockValidate()).toStrictEqual(["Numbers ONLY. Must be at least 1,000,000,000"]);
+});
