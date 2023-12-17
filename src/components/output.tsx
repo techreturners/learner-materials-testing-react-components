@@ -19,12 +19,12 @@ export const Output: React.FC<FormValuesProps> = (props) => {
         <>
         {props.submitted && errorMessage === "" &&
          <div className="col-50-right submitted">
-        <p>{props.title}: {props.value}</p>
+        <p className = "valid">{props.title}: {props.value}</p>
         </div>
         }
         {props.submitted && errorMessage !== "" &&
          <div className="col-50-right pending">
-        <p className = "error">{props.title}: {props.message}</p>
+        <p className = "error">{props.title}:</p>
         </div>
         }
         </>

@@ -40,8 +40,8 @@ const W12MForm = () => {
 	function validateInputField(title:string, regex: Array<RegExp>, value: string, message: Array<string>) {
 		if (submitted) {
 		const errorMessage  = validateInput(title, regex, value, message)
-				.reduce((acc: string, message: string) => acc+" and "+message, "")
-				.replace(" and ", "");
+				.reduce((acc: string, message: string) => acc+"; "+message, "")
+				.replace("; ", "");
 		return errorMessage;
 		}
 		return "";

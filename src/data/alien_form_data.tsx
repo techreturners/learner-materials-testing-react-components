@@ -22,22 +22,22 @@ export const formTextInput: Array<FormInputObject> = [
     id: "input-1",
     title: "Species Name",
     role: "speciesName",
-    regex: [/^[a-z]{3,23}$/gi],
-    errorMessage: ["Must be between 3 and 23 characters. No numbers or special characters allowed!"]
+    regex: [/^.{3,23}$/gi, /^[a-z]+$/gi],
+    errorMessage: ["must be between 3 and 23 characters", "no numbers or special characters allowed"]
     },
     {
     id: "input-2",
     title: "Planet Name",
     role: "planetName",
-    regex: [/^[a-z0-9]{2,49}$/gi],
-    errorMessage: ["Must be between 2 and 49 characters. Numbers are allowed, but no special characters."]
+    regex: [/^.{2,49}$/gi, /^[a-z0-9]+$/gi],
+    errorMessage: ["must be between 2 and 49 characters", "no special characters"]
     },
     {
     id: "input-3",
     title: "Number of Beings",
     role: "numberOfBeings",
-    regex: [/^[0-9]{10,}$/g],
-    errorMessage: ["Numbers ONLY. Must be at least 1,000,000,000"]
+    regex: [/^[0-9]+$/g, /^[0-9]{10,}$/g],
+    errorMessage: ["numbers ONLY", "must be at least 1,000,000,000"]
     }
 ];
 
@@ -58,7 +58,7 @@ export const formTextAreaInput: Array<FormTextAreaInputObject> = [
     title: "Reasons For Sparing",
     role: "reasonsForSparing",
     regex: [/^.{17,153}$/gi],
-    errorMessage: ["Must be between 17 and 153 characters"],
+    errorMessage: ["must be between 17 and 153 characters"],
     size: {rows: 5, cols: 20}
     }
 ];

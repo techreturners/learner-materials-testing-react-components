@@ -69,7 +69,7 @@ test('Reasons For Sparing output displays error message if submitted value is in
 		role: "reasonsForSparing",
 		value: "B",
 		regex: [/^.{17,153}$/gi],
-		message: ["Must be between 17 and 153 characters"],
+		message: ["must be between 17 and 153 characters"],
 		submitted: true,
 		validate: mockValidate,
 		size: {rows: 5, cols: 20}
@@ -77,11 +77,11 @@ test('Reasons For Sparing output displays error message if submitted value is in
 	//Act
 	render(<Output {...requiredProps}/>)
 	//Assert
-	const text = screen.getByText(
-		/Must be between 17 and 153 characters/i
-	);
+	mockValidate.mockReturnValue(requiredProps.message);
+	render(<Output {...requiredProps}/>)
+	//Assert
 	expect(mockValidate).toBeCalled();
-	expect(text).toBeInTheDocument();
+	expect(mockValidate()).toStrictEqual(requiredProps.message);
 });
 
 test('Number of Beings output displays error message if submitted value is invalid', () => {
@@ -92,16 +92,16 @@ test('Number of Beings output displays error message if submitted value is inval
 		role: "numberOfBeings",
 		value: "5",
 		regex: [/^[0-9]{10,}$/g],
-		message: ["Numbers ONLY. Must be at least 1,000,000,000"],
+		message: ["numbers ONLY. Must be at least 1,000,000,000"],
 		submitted: true,
 		validate: mockValidate
 	};
 	//Act
-	mockValidate.mockReturnValue(["Numbers ONLY. Must be at least 1,000,000,000"]);
+	mockValidate.mockReturnValue(["numbers ONLY. Must be at least 1,000,000,000"]);
 	render(<Output {...requiredProps}/>)
 	//Assert
 	expect(mockValidate).toBeCalled();
-	expect(mockValidate()).toStrictEqual(["Numbers ONLY. Must be at least 1,000,000,000"]);
+	expect(mockValidate()).toStrictEqual(["numbers ONLY. Must be at least 1,000,000,000"]);
 });
 
 test('Maths answer validation returns error message if answer is incorrect', () => {
