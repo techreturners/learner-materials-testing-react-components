@@ -6,17 +6,17 @@ import { TextAreaInput } from './text_area_input';
 import { Output } from './output';
 import { SubmitButton } from './submit_button';
 import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
-initialValues, FormInputObject, FormSelectInputObject, FormTextAreaInputObject, InitialValue}
+initialValues, FormInputObject, FormSelectInputObject, FormTextAreaInputObject}
 from '../data/alien_form_data';
 import { validateInput } from "../validate/validate_input";
 export interface InputProps {
 	title: string;
 	role: string;
 	value: string;
-	regex: RegExp;
-	message: string;
+	regex: Array<RegExp>;
+	message: Array<string>;
 	submitted: boolean;
-	validate: (title:string, regex: RegExp, value: string, message: string) => string;
+	validate: (title:string, regex: Array<RegExp>, value: string, message: Array<string>) => string;
 }
 
 const W12MForm = () => {
@@ -37,7 +37,7 @@ const W12MForm = () => {
 		)
 	}
 
-	function validateTextField(title:string, regex: RegExp, value: string, message: string) {
+	function validateInputField(title:string, regex: Array<RegExp>, value: string, message: Array<string>) {
 		if (submitted) {
 		const errorMessage  = validateInput(title, regex, value, message)
 				.reduce((acc: string, message: string) => acc+" and "+message, "")
@@ -62,7 +62,7 @@ const W12MForm = () => {
 				value={input[formTextInput[i].role]} 
 				onChange={handleChange} 
 				submitted={submitted}
-				validate = {validateTextField} 
+				validate = {validateInputField} 
 				role = {formTextInput[i].role} 
 			/>)
 			}
@@ -77,7 +77,7 @@ const W12MForm = () => {
 				value={input[formSelectInput[i].role]} 
 				onChange={handleChange} 
 				submitted={submitted}
-				validate = {validateTextField} 
+				validate = {validateInputField} 
 				role = {formSelectInput[i].role} 
 				options = {formSelectInput[i].options}
 				/>)
@@ -93,7 +93,7 @@ const W12MForm = () => {
 				value={input[formTextAreaInput[i].role]} 
 				onChange={handleChange} 
 				submitted={submitted}
-				validate = {validateTextField} 
+				validate = {validateInputField} 
 				role = {formTextAreaInput[i].role} 
 				size = {formTextAreaInput[i].size}
 			/>)
@@ -110,7 +110,7 @@ const W12MForm = () => {
 				message = {formDataArray[i].errorMessage}
 				role = {formDataArray[i].role} 
 				regex={formDataArray[i].regex} 
-				validate = {validateTextField} submitted={submitted}/>
+				validate = {validateInputField} submitted={submitted}/>
 			)}
 		</section>	
 	);
