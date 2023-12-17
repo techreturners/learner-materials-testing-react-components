@@ -5,7 +5,8 @@ import { SelectInput } from './select_input';
 import { TextAreaInput } from './text_area_input';
 import { Output } from './output';
 import { SubmitButton } from './submit_button';
-import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, initialValues}
+import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
+initialValues, FormInputObject, FormSelectInputObject, FormTextAreaInputObject, InitialValue}
 from '../data/alien_form_data';
 import { validateInput } from "../validate/validate_input";
 export interface InputProps {
@@ -17,24 +18,6 @@ export interface InputProps {
 	submitted: boolean;
 	validate: (title:string, regex: RegExp, value: string, message: string) => string;
 }
-export interface FormInputObject {
-	id: string;
-    title: string;
-    role: string;
-    regex: RegExp;
-    errorMessage: string;
-}
-export interface FormSelectInputObject extends FormInputObject {
-    options: Array<string>
-}
-export interface FormTextAreaInputObject extends FormInputObject {
-    size: {
-		rows: number;
-		cols: number;
-	}
-}
-
-export type InitialValue = {[key: string]: string};
 
 const W12MForm = () => {
 	

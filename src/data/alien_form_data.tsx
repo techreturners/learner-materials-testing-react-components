@@ -1,5 +1,21 @@
-import { FormInputObject, FormSelectInputObject, FormTextAreaInputObject, InitialValue }
-from "../components/W12MForm";
+export interface FormInputObject {
+	id: string;
+    title: string;
+    role: string;
+    regex: RegExp;
+    errorMessage: string;
+}
+export interface FormSelectInputObject extends FormInputObject {
+    options: Array<string>
+}
+export interface FormTextAreaInputObject extends FormInputObject {
+    size: {
+		rows: number;
+		cols: number;
+	}
+}
+
+export type InitialValue = {[key: string]: string};
 
 export const formTextInput: Array<FormInputObject> = [
     {
