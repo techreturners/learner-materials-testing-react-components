@@ -18,13 +18,13 @@ export interface InputProps {
 	validate: (title:string, regex: RegExp, value: string, message: string) => string;
 }
 export interface FormInputObject {
+	id: string;
     title: string;
     role: string;
     regex: RegExp;
     errorMessage: string;
 }
 export interface FormSelectInputObject extends FormInputObject {
-	[x: string]: any;
     options: Array<string>
 }
 export interface FormTextAreaInputObject extends FormInputObject {
@@ -72,7 +72,7 @@ const W12MForm = () => {
 			{formTextInput.map((field: FormInputObject, i: number) => 
 
 			<TextInput 
-				key = {i.toString()}
+				key = {formTextInput[i].id}
 				title = {formTextInput[i].title} 
 				regex={formTextInput[i].regex} 
 				message = {formTextInput[i].errorMessage}
@@ -87,7 +87,7 @@ const W12MForm = () => {
 			{formSelectInput.map((field: FormSelectInputObject, i: number) => 
 
 				<SelectInput
-				key = {i.toString()}
+				key = {formSelectInput[i].id}
 				title = {formSelectInput[i].title} 
 				regex={formSelectInput[i].regex} 
 				message = {formSelectInput[i].errorMessage}
@@ -103,7 +103,7 @@ const W12MForm = () => {
 			{formTextAreaInput.map((field: FormTextAreaInputObject, i: number) => 
 
 			<TextAreaInput 
-				key = {i.toString()}
+				key = {formSelectInput[i].id}
 				title = {formTextAreaInput[i].title} 
 				regex={formTextAreaInput[i].regex} 
 				message = {formTextAreaInput[i].errorMessage}
@@ -121,7 +121,7 @@ const W12MForm = () => {
 
 			{formDataArray.map((field: FormInputObject, i: number) => 
 			<Output 
-				key = {i.toString()}
+				key = {formDataArray[i].id}
 				title = {formDataArray[i].title} 
 				value = {input[formDataArray[i].role]} 
 				message = {formDataArray[i].errorMessage}

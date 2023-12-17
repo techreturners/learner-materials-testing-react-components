@@ -3,18 +3,21 @@ from "../components/W12MForm";
 
 export const formTextInput: Array<FormInputObject> = [
     {
+    id: "input-1",
     title: "Species Name",
     role: "speciesName",
     regex: /^[a-z]{3,23}$/gi,
     errorMessage: "Must be between 3 and 23 characters. No numbers or special characters allowed!"
     },
     {
+    id: "input-2",
     title: "Planet Name",
     role: "planetName",
     regex: /^[a-z0-9]{2,49}$/gi,
     errorMessage: "Must be between 2 and 49 characters. Numbers are allowed, but no special characters."
     },
     {
+    id: "input-3",
     title: "Number of Beings",
     role: "numberOfBeings",
     regex: /^[0-9]{10,}$/g,
@@ -24,6 +27,7 @@ export const formTextInput: Array<FormInputObject> = [
 
 export const formSelectInput: Array<FormSelectInputObject> = [
     {
+    id: "input-4",
     title: "What is 2 + 2?",
     role: "mathsAnswer",
     regex: /^4{1}$/,
@@ -34,6 +38,7 @@ export const formSelectInput: Array<FormSelectInputObject> = [
 
 export const formTextAreaInput: Array<FormTextAreaInputObject> = [
     {
+    id: "input-5",
     title: "Reasons For Sparing",
     role: "reasonsForSparing",
     regex: /^.{17,153}$/gi,
