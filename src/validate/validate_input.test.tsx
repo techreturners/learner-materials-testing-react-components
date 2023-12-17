@@ -1,6 +1,6 @@
 import { validateInput } from "./validate_input";
 
-describe("test validation of user input", () => {
+describe("test validation of user input to fields", () => {
 	test('Maths answer validation returns empty array if answer is correct', () => {
 		//Arrange
 		const params = {
